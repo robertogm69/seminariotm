@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Sistema Web de Seminarios del Templo Mayor INAH">
-
     <title>Seminario Permanente del Templo Mayor</title>
 
     <!-- Prefetch -->
@@ -33,13 +31,6 @@
                 <a href="index.php">
                     <h1 class="logo__nombre no-margin centrar-texto">Seminario<span class="logo__bold">Permanente del Templo Mayor</span></h1>
                 </a>
-
-
-                <!-- <nav class="navegacion">
-                    <a href="registro.php" class="navegacion__enlace">Registro Nuevo Usuario</a>
-                    <a href="login.php" class="navegacion__enlace">Login de Usuario</a>
-                    <a href="logout.php" class="navegacion__enlace">Salir</a> -->
-               <!-- </nav>-->
 
             </div>
         </div>
