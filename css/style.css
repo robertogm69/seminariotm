@@ -12,7 +12,7 @@
 
 html {
     height: 100%;
-    margin: 0;
+    margin: 0;    
     flex-direction: column;
 }
 
@@ -59,20 +59,100 @@ body {
 }
 
 .contenedor-principal {
-    display: flex; 
-    justify-content: center; /* Centro el contenido horizontalmente */    
-    align-items: flex-start; /* Centro el contenido verticalmente */
-    min-height: 100vh; /* Ajusta la altura del contenedor principal */
-    padding-top: 20px; /* Añade un relleno superior */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribuye el contenido verticalmente */
+    align-items: center; /* Centra el contenido horizontalmente */
+    min-height: 100vh; /* Asegura que el contenedor ocupe toda la altura de la ventana */
+    padding: 20px; /* Añade un relleno */
 }
+
+
+.contenedor-principal-video {
+    display: flex; /* Alinea los elementos en una fila */
+    flex-wrap: wrap; /* Permite que los elementos se ajusten a la siguiente línea si no caben en una sola fila */
+    margin-bottom: 60px;
+}
+
+.video-contenedor {
+    flex: 1 1 100%; /* Ajusta el tamaño del contenedor de video */
+    max-width: 430px; /* Ajusta el ancho máximo del contenedor de video */  
+    border-radius: 8px; /* Bordes redondeados */ 
+    height: 290px; /* Ajusta la altura del contenedor de video */
+    overflow: hidden; /* Oculta el contenido que se desborda */
+}
+
+.video-left {
+    float: left; /* Alinea el video a la izquierda */
+    width: 50%; /* Ajusta el ancho del contenedor de video */
+}
+
+.contenedor-principal-video::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.video-dynamic-margin {
+    margin-top: 10px; /* Añade un margen superior al video */
+    margin-bottom: 10px; /* Añade un margen inferior al video */    
+}
+
+/* Estilos para la tabla de videos */
+.table-videos {
+    width: 100%;
+    max-width: 490px; /* Ajusta el ancho máximo de la tabla */
+    margin: 20px auto;
+    border-collapse: collapse; /* Combina los bordes de la tabla */
+    background-color: #ffffff; /* Fondo blanco */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;    
+    margin-top: 20px; /* Añade un margen superior para separar la tabla del video */
+    border: 1px solid rgba(0, 0, 0, 0.2); /* Contorno semitransparente */
+}
+
+.table-videos th, .table-videos td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd; /* Añade un borde inferior a las celdas */
+    color: #000000 !important; /* Color del texto */
+}
+
+.table-videos th {
+    background-color: #f2f2f2; /* Fondo gris claro */
+    color: #000000 !important; /* Color del texto */
+    font-weight: bold;
+}
+
+.table-videos tr:nth-child(even) {
+    background-color: #f9f9f9; /* Fondo gris claro al pasar el raton*/
+}
+
+.table-videos tr:hover {
+    background-color: #e0e0e0;
+}
+
+.table-videos td p {
+    margin: 5px 0;
+    color: #000000 !important; /* Color del texto */
+}
+
+.table-videos td strong {
+    color: #32722a;
+}
+
+
+
+
+
 
 /* Ajustes para la introducción */
-.contenedor-principal img {
-    width: 50%; /* Ajusta el ancho de la imagen */
-    height: 50%; /* Ajusta la altura de la imagen */
+.contenedor-intro  img {
+    width: 35%; /* Ajusta el ancho de la imagen */
+    height: 45%; /* Ajusta la altura de la imagen */
     object-fit: cover; /* Ajusta la imagen al contenedor */
 }
-
 
 .contenedor-texto {
     width: 50%; /* Ajusta el ancho del contenedor de texto */
@@ -82,6 +162,7 @@ body {
 
 .contenedor-texto h3, .contenedor-texto h4 {
     text-align: center; /* Alinea el texto al centro */
+    color: var(--blanco);    
 }
 
 .contenedor-texto p {
@@ -117,6 +198,58 @@ body {
     gap: 20px; /* Añade un espacio entre el menu y el formulario */
 }
 
+
+.main-container-intro {
+    display: flex;
+}
+
+main.contenedor_imagen_intro {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el contenido horizontalmente */
+    justify-content: flex-start; /* Alinea el contenido al principio */
+}
+
+.content-area_intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el contenido horizontalmente */
+}
+
+.contenedor-flex_intro {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start; /*Alinea los elementos verticalmente */
+}
+
+.contenedor-imagen-intro {
+    width: 50%; /* Ajusta el ancho de la imagen */
+    height: auto;
+    margin-right: 20px;
+    margin-top: 0; /* Reduce el espacio en la parte superior */
+   
+}
+
+.contenedor-texto-intro {
+    flex: 1;
+}
+
+.contenedor-texto-intro h3, .contenedor-texto-intro h4 {
+    text-align: center; /* Centra los títulos */
+    color: var(--blanco);
+}
+
+.contenedor-texto-intro p {
+    text-align: justify; /* Justifica los párrafos */
+    font-size: 1.2em; /* Ajusta el tamaño de la fuente */
+}
+
+.logo-inah{
+    margin-top: 0; /* Reduce el margen superior del logo*/
+    margin-bottom: 20px; /* Añade un margen inferior al logo */
+}
+
 a {
     color: --blanco;
     text-decoration: none;
@@ -137,7 +270,6 @@ ul li a{
 ul li a:hover {
     background-color: #f0f0f0;
 }
-
 
 h1, h2, h3, h4 {
     font-family: var(--fuenteHeading);
@@ -175,7 +307,6 @@ img {
 
 /** Header **/
 
-
 .webp .header {
     background-image: url(../img/tempmay5.jpg);
 }
@@ -192,7 +323,6 @@ img {
     background-repeat: no-repeat;
     background-position: center center;
 }
-
 
 .header__texto {
     text-align: center;
@@ -212,7 +342,6 @@ img {
     justify-content: space-between;
     align-items: center;
 }
-
 
 @media (min-width: 568px) {
     .barra {
@@ -272,10 +401,12 @@ img {
 
     @media (min-width: 768px) {
         .contenido-principal {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            column-gap: 4rem;
             
+            padding: 10px; /* Reduce el relleno discpositivos pequeños */
+        }
+
+        .contenido-principal h2 {
+            padding: 10px; /* Reduce el relleno de los títulos */
         }
     }
 
@@ -302,8 +433,6 @@ img {
     .boton {
         display: inline-block;
         margin-right: 10px;
-        
-
     }
 }
 
@@ -392,7 +521,6 @@ padding: 8px 12px;
     .widget-curso__info {
         font-size: 2rem;
     }
-
     
     .footer {
     background-color: #333;
@@ -402,15 +530,14 @@ padding: 8px 12px;
     position: absolute;
     width: 100%;    
     bottom: 0;
-    height: 70px;
+    height: 50px;
     }
 
     footer .contenedor {
         max-width: 1200px;
         margin: 0 auto;
     }
-
-                    
+                  
         .formulario {
             width: 100%; /* Ajusta el ancho del formulario */                      
             background-color: rgba(127, 223, 240, 0.8); /* Fondo semitransparente */            
@@ -445,12 +572,10 @@ padding: 8px 12px;
             border-radius: 10px; 
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             background-color: rgba(127, 223, 240, 0.8); /* Fondo semitransparente */  
-            height: auto; /* Ajusta la altura del contenedor del formulario */
-            
-            
-           
+            height: auto; /* Ajusta la altura del contenedor del formulario */                
         }
-        
+
+                
         .formulario-semblanza-contenedor .campo {
             display: flex; /* Alinea los campos en una fila */ 
             flex-direction: row; /* Alinea los campos en una fila */
@@ -458,8 +583,7 @@ padding: 8px 12px;
             margin-bottom: 5px; /* Añade un margen inferior a los campos */
             flex-wrap: wrap;
         }           
-        
-        
+                
         .formulario-semblanza-contenedor .campo__label {
             text-align: left; /* Alinea las etiquetas hacia la izquierda */
             padding-right: 1rem;            
@@ -473,6 +597,43 @@ padding: 8px 12px;
             border-radius: 5px;
                      
         }
+
+
+
+        .formulario-material-contenedor {
+            flex: 1; /* Ajusta el tamaño del contenedor del formulario */
+            max-width: 1000px; /* Ajusta el ancho máximo del contenedor del formulario */
+            padding: 15px; /* Añade relleno al contenedor del formulario */                       
+            border-radius: 10px; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: rgba(127, 223, 240, 0.8); /* Fondo semitransparente */  
+            height: auto; /* Ajusta la altura del contenedor del formulario */                
+        }
+
+
+        .formulario-material-contenedor .campo {
+            display: flex; /* Alinea los campos en una fila */ 
+            flex-direction: row; /* Alinea los campos en una fila */
+            align-items: center; /* Alinea los elementos en su línea */
+            margin-bottom: 5px; /* Añade un margen inferior a los campos */
+            flex-wrap: wrap;
+        }           
+
+        .formulario-material-contenedor .campo__label {
+            text-align: left; /* Alinea las etiquetas hacia la izquierda */
+            padding-right: 1rem;            
+            border-radius: 5px;                        
+        }
+        
+        .formulario-material-contenedor .campo__field {
+            flex: 1;
+            padding: 5px;            
+            border: 1px solid var(--gris);
+            border-radius: 5px;
+                     
+        }
+
+
 
         /* Media query para dispositivos pequeños */
 @media (max-width: 600px) {
@@ -490,7 +651,54 @@ padding: 8px 12px;
     }
 }
 
+/* Estilos para el formulario de imagen */
+.formulario-video-contenedor {
+    flex: 1; /* Ajusta el tamaño del contenedor del formulario */
+    max-width: 1000px; /* Ajusta el ancho máximo del contenedor del formulario */
+    padding: 15px; /* Añade relleno al contenedor del formulario */                       
+    border-radius: 10px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(127, 223, 240, 0.8); /* Fondo semitransparente */  
+    height: auto; /* Ajusta la altura del contenedor del formulario */  
+}
 
+.formulario-video-contenedor .campo {
+    display: flex; /* Alinea los campos en una fila */ 
+    flex-direction: row; /* Alinea los campos en una fila */
+    align-items: center; /* Alinea los elementos en su línea */
+    margin-bottom: 5px; /* Añade un margen inferior a los campos */
+    flex-wrap: wrap;
+}           
+
+.formulario-video-contenedor .campo__label {
+    text-align: left; /* Alinea las etiquetas hacia la izquierda */
+    padding-right: 1rem;            
+    border-radius: 5px;                        
+}
+
+.formulario-video-contenedor .campo__field {
+    flex: 1;
+    padding: 5px;            
+    border: 1px solid var(--gris);
+    border-radius: 5px;
+             
+}
+
+/* Media query para dispositivos pequeños */
+@media (max-width: 600px) {
+.formulario-video-contenedor {
+padding: 10px; /* Reduce el relleno en dispositivos pequeños */
+}
+
+.formulario-video-contenedor .campo__label {
+flex: 0 0 auto; /* Ajusta el tamaño de las etiquetas en dispositivos pequeños */
+padding-right: 0.5rem; /* Reduce el relleno a la derecha en dispositivos pequeños */
+}
+
+.formulario-video-contenedor .campo__field {
+padding: 3px; /* Reduce el relleno de los campos en dispositivos pequeños */
+}
+}
         .formulario_imagen {
             background-color: var(--blanco);
             padding: 10px; 
@@ -540,7 +748,8 @@ padding: 8px 12px;
             margin-bottom: 20px;
             border: 1px solid transparent;
             border-radius: 4px;
-        }
+        }   
+        
         .alert-success {
             color: #3c763d;
             background-color: #dff0d8;
@@ -653,8 +862,7 @@ padding: 8px 12px;
             font-size: 16px;
         }  
 
-        
-               
+                       
         /* Ajustes menú vertical */ 
 
         .vertical-menu {
@@ -707,8 +915,7 @@ padding: 8px 12px;
         /* Reducir el tamaño de la fuente del submenú */
         .vertical-menu ul ul li a {
         font-size: 0.9em; /* Ajusta el tamaño de la fuente según sea necesario */
-        }
-
+        }        
 
                 
         body {
@@ -740,10 +947,13 @@ padding: 8px 12px;
         }
 
         .contenido-principal {
-            position: relative;
-            z-index: 2;
-            color: #8dabb4;
-            padding: 20px;
+            flex: 1; /* Permite que el contenido principal ocupe el espacio disponible */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Centra el contenido verticalmente */
+            align-items: center; /* Centra el contenido horizontalmente */
+            width: 100%; /* Asegura que el contenido ocupe todo el ancho */
+            padding: 20px; /* Añade un relleno */
         }
 
         nav.vertical-menu ul {
@@ -754,11 +964,9 @@ padding: 8px 12px;
         nav.vertical-menu ul li {
             margin-bottom: 5px; /* Reduce the margin between menu items */
         }
-
+        
 
         /* Estilos para la tabla */
-
-
 
 .tabla-usuarios {
     display: flex;
@@ -793,8 +1001,6 @@ table {
     color: #e2eaec;   
     background-color: #0c0b0b;    
 }
-
-
 
 .table-contenedor img {
     max-width: 40px; 
@@ -901,29 +1107,49 @@ table {
     cursor: pointer;
 }
 .modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
+    display: none; 
+    position: fixed; 
+    z-index: 1000; /* Asegura que la ventana modal esté en el frente */
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4); /* Fondo oscuro */
 }
 .modal-content {
+    width: 80%; /* Ajusta el ancho de la ventana modal */
+    height: 45%; /* Ajusta la altura de la ventana modal */
     background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 55%; /* Cambiar el ancho de la ventana como se necesite */
+    margin: 5% auto;
+    padding: 10px;
+    border: 1px solid #888;    
     display: flex;
     align-items: center;
+    top: 10%; /* Ajusta la posición vertical de la ventana modal */
+    z-index: 1001; /* Asegura que la ventana modal esté en el frente */
+    position: relative;
 }
+
 .modal-content img {
-    width: 50%;
+    width: 35%;    
 }
+
+
+.small-image {
+    z-index: 999; /* Asegura que las imágenes estén detrás de la ventana modal */
+}
+
+.dimmed {
+    opacity: 0.8; /* Oscurece las imágenes */
+}
+
+/* Elimina el botón de cierre */
+.close {
+    display: none;
+}
+
+
 .modal-content .text {
     margin-left: 20px;
     color: #000 !important; /* Cambiar el color del texto */
@@ -966,5 +1192,10 @@ table {
     text-align: center;
 }
 
-
+.session-label {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 5px; /* Espacio entre el letrero y la imagen */
+}
 

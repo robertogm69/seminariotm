@@ -5,10 +5,19 @@ $con = conectarDB();
 
 include '../includes/templates/nav.php';
 
+// Obtener el número de página actual
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1; // Si no hay nada en el GET, la página actual es 1
+$limit = 3; // Número de usuarios por página 
+$offset = ($page - 1) * $limit; // Se calcula el numero de pagina menos 1 por el limite de usuarios
 
+// Obtener el número total de usuarios
+$totalUsuariosQuery = "SELECT COUNT(*) as total FROM usuarios";
+$totalUsuariosResult = mysqli_query($con, $totalUsuariosQuery);
+$totalUsuarios = mysqli_fetch_assoc($totalUsuariosResult)['total'];
+$totalPages = ceil($totalUsuarios / $limit);
 
 // Obtener los usuarios desde la base de datos
-$queryUsuarios = "SELECT * FROM usuarios";
+$queryUsuarios = "SELECT * FROM usuarios LIMIT $limit OFFSET $offset";
 $resultadoUsuarios = mysqli_query($con, $queryUsuarios);
 
 ?>
@@ -42,46 +51,33 @@ $resultadoUsuarios = mysqli_query($con, $queryUsuarios);
             </tr>
         </thead>
         <tbody>
-            <script>
-            // Cargar los usuarios con AJAX    
-                function cargarUsuarios() {
-                const xhr = new XMLHttpRequest();
-                xhr.open('GET', 'obtener_usuarios.php', true);
-                xhr.onload = function() {
-                    if (this.status === 200) {
-                        const usuarios = JSON.parse(this.responseText);
-                        let output = '';
-                        usuarios.forEach(function(usuario) {
-                          output += `
-                                <tr>
-                                <td>${usuario.id}</td>
-                                <td>${usuario.nombre}</td>
-                                <td>${usuario.apellido1}</td>
-                                <td>${usuario.apellido2}</td>
-                                <td>${usuario.email}</td>
-                                <td>${usuario.perfil_id}</td>
-                                <td>
-                                    <a href="editar.php?id=${usuario.id}" class="boton boton-amarillo">Editar</a>
-                                    <a href="eliminar.php?id=${usuario.id}" class="boton boton-rojo">Eliminar</a>
-                                </td>
-                            </tr>
-                        `;
-                    });
-                    document.querySelector('#usuarios tbody').innerHTML = output;
-                  } else {
-                    console.error('Error al cargar usuarios:', this.statusText);
-                  }
-              }
-                xhr.send();
-            }
-           // Cargar usuarios al cargar la página
-             document.addEventListener('DOMContentLoaded', cargarUsuarios);
-
-          // Refrescar usuarios cada 5 segundos
-             setInterval(cargarUsuarios, 5000);
-        </script>            
+        <?php while($usuario = mysqli_fetch_assoc($resultadoUsuarios)): ?> 
+                        <tr>
+                            <td><?php echo $usuario['id']; ?></td>
+                            <td><?php echo $usuario['nombre']; ?></td>
+                            <td><?php echo $usuario['apellido1']; ?></td>
+                            <td><?php echo $usuario['apellido2']; ?></td>
+                            <td><?php echo $usuario['email']; ?></td>
+                            <td><?php echo $usuario['perfil_id']; ?></td>
+                            <td>
+                                <a href="editar.php?id=<?php echo $usuario['id']; ?>" class="boton boton-amarillo">Editar</a>
+                                <a href="eliminar.php?id=<?php echo $usuario['id']; ?>" class="boton boton-rojo">Eliminar</a>
+                            </td>
+                        </tr>
+                        <?php endwhile; ?>
+                    </tbody>            
     </tbody>
 </table>
+<div class="paginacion">
+                    <?php if($page > 1): ?>
+                        <a href="?page=<?php echo $page - 1; ?>" class="boton boton--secundario">&laquo; Anterior</a>
+                    <?php endif; ?>
+                    <?php for($i = 1; $i <= $totalPages; $i++): ?>
+                        <a href="?page=<?php echo $i; ?>" class="boton boton--secundario"><?php echo $i; ?></a>
+                    <?php endfor; ?>
+                    <?php if($page < $totalPages): ?>
+                        <a href="?page=<?php echo $page + 1; ?>" class="boton boton--secundario">Siguiente &raquo;</a>
+                    <?php endif; ?>
 <div class="campo">       
        <a href="registro.php" class="boton boton--secundario">Volver</a>            
         </div>

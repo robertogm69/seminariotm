@@ -1,7 +1,7 @@
 <?php 
 //  Verificar la sesión
     session_start();
-    
+   
     // Verificar si el usuario está autenticado
     if (!isset($_SESSION['email']) || $_SESSION['perfil_id'] != 1) {
         // Si no es superadministrador redirigir al login
@@ -17,6 +17,7 @@
 require '../includes/config/conexiondb.php';
 $con = conectarDB();
 
+//  Incluir el encabezado
 include '../includes/templates/nav.php';
 
 $errores = [];   // Arreglo vacio
@@ -120,8 +121,9 @@ $resultadoUsuarios = mysqli_query($con, $queryUsuarios);
                     <ul>
                         <li><a href="../semblanza/administrar_semblanzas.php">Administrar Semblanzas</a></li>
                         <li><a href="../video/administrar_videos.php">Administrar Videos</a></li>
+                        <li><a href="../material/administrar_material.php">Administrar Materiales</a></li>
                         <li><a href="../historico/administrar_historico.php">Administrar Otros Ciclos</a></li>
-                        <li><a href="tablausuarios.php">Usuarios Registrados</a></li>
+                        <li><a href="tablausuarios.php">Usuarios Registrados</a></li>                        
                     </ul>
                 </nav>
         

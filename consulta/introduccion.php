@@ -17,16 +17,18 @@ require '../includes/config/conexiondb.php';
 </head>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<body>
-<main class="contenedor_imagen">
-<img src="../img/logoInah.png" alt="Logo INAH">
-    <div class="content-area">
+<body>  
+<div class="main-container-intro">  
+<?php include '../includes/templates/menu.php';?>
+<main class="contenedor_imagen_intro">
+<img src="../img/logoInah.png" alt="Logo INAH" class="logo-inah">
+    <div class="content-area_intro">
     <div class="contenedor"></div>    
-    <div class="formulario__imagen">
-      <div class="contenedor-principal">         
-      <div class="contenedor-flex">
-        <img class="contenedor-imagen-intro" src="../img/tempmay12.jpg" alt="imagen Intro">
-        <div class="contenedor-texto">         
+    <div class="formulario__imagen">        
+      <div class="contenedor-intro">       
+      <div class="contenedor-flex_intro">
+        <img class="contenedor-imagen-intro" src="../img/tempmay10.jpg" alt="imagen Intro">
+        <div class="contenedor-texto-intro">         
         <h3>Introducción</h3>
                 <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
                 <h4>Objetivo</h4>
